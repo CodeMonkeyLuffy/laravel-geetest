@@ -3,7 +3,7 @@
 <div id="{{ $captchaid }}"></div>
 <p id="wait-{{ $captchaid }}" class="show">{{ Config::get('geetest.loading', '验证码正在加载中') }}</p>
 <script>
-    var geetest = function (url) {
+    var {{$captchaid}} = function (url) {
         var handlerEmbed = function (captchaObj) {
             $("#{{ $captchaid }}").closest('form').submit(function (e) {
                 var validate = captchaObj.getValidate();
@@ -40,7 +40,7 @@
                     offline: !data.success,
                     new_captcha: data.new_captcha,
                     product: "{{ Config::get('geetest.product', 'float')}}",
-                    width: '{{ Config::get('geetest.width', '300px') }}',
+                    width: '{{$width}}',
                     lang: '{{ Config::get('geetest.lang', 'zh-cn') }}',
                     http: '{{ Config::get('geetest.protocol', 'https') }}' + '://'
                 }, handlerEmbed);
@@ -48,7 +48,7 @@
         });
     };
     (function () {
-        geetest('{{Config::get('geetest.url', 'geetest')}}');
+        {{$captchaid}}('{{Config::get('geetest.url', 'geetest')}}');
     })();
 </script>
 <style>

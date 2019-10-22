@@ -247,10 +247,11 @@ class GeetestLib
      * 页面渲染
      * @param string $product
      */
-    public function render($captchaId = 'geetest-captcha')
+    public function render($captchaId = "GeetestCaptcha", $width = "300px")
     {
         return view('geetest::geetest', [
-            'captchaid' => $captchaId
+            'captchaid' => $captchaId,
+            'width' => $width
         ]);
     }
 }

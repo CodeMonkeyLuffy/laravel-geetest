@@ -50,7 +50,7 @@
 安装扩展后，在页面需要使用极验验证码的地方增加如下代码
 
 ```php
-{!! Geetest::render() !!}
+{!! Geetest::render("Div Id","Input Width") !!}
 ```
 
 2. 服务端校验
