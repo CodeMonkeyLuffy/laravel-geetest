@@ -1,6 +1,7 @@
 <?php
 
 namespace CodeMonkeyLuffy\Geetest\Validators;
+
 use CodeMonkeyLuffy\Geetest\Facades\Geetest;
 
 class GeetestValidator
@@ -12,8 +13,8 @@ class GeetestValidator
     public function validate()
     {
         list($geetest_challenge, $geetest_validate, $geetest_seccode) = array_values(request()->only('geetest_challenge', 'geetest_validate', 'geetest_seccode'));
-        if (session()->get('gtserver') == 1) {
-            if (Geetest::successValidate($geetest_challenge, $geetest_validate, $geetest_seccode, ['user_id'=>session()->get('user_id')])) {
+        if (cache()->get('gtserver') == 1) {
+            if (Geetest::successValidate($geetest_challenge, $geetest_validate, $geetest_seccode, ['user_id' => session()->get('user_id')])) {
                 return true;
             }
             return false;
