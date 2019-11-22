@@ -14,10 +14,8 @@ trait GeetestTrait
      */
     public function captcha()
     {
-        $user_id = 'test';
+        $user_id = 'geetest';
         $status = Geetest::preProcess(['user_id' => $user_id]);
-        cache()->put('gtserver', $status, 300);
-        cache()->put('user_id', $user_id, 300);
         echo Geetest::getResponseStr();
     }
 }
